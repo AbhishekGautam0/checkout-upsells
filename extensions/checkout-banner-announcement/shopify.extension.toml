@@ -1,0 +1,87 @@
+# Learn more about configuring your checkout UI extension:
+# https://shopify.dev/docs/api/checkout-ui-extensions/latest/configuration
+
+# The version of APIs your extension will receive. Learn more:
+# https://shopify.dev/docs/api/usage/versioning
+api_version = "2026-07"
+
+[[extensions]]
+name = "checkout-banner-announcement"
+handle = "checkout-banner-announcement"
+type = "ui_extension"
+uid = "2303938d-b29e-70ae-7a60-c140218324026f6ffd6b"
+
+# Controls where in Shopify your extension will be injected,
+# and the file that contains your extension’s source code. Learn more:
+# https://shopify.dev/docs/api/checkout-ui-extensions/latest/targets
+
+[[extensions.targeting]]
+module = "./src/Checkout.jsx"
+target = "purchase.checkout.header.render-after"
+
+[[extensions.targeting]]
+module = "./src/Checkout.jsx"
+target = "purchase.checkout.block.render"
+
+[[extensions.targeting]]
+module = "./src/Checkout.jsx"
+target = "purchase.thank-you.block.render"
+
+
+[extensions.capabilities]
+# Gives your extension access to directly query Shopify’s storefront API.
+# https://shopify.dev/docs/apps/build/checkout/capabilities#storefront-api-access
+api_access = true
+
+# Defines settings that will be collected from merchants installing
+# your extension. Learn more:
+# https://shopify.dev/docs/api/checkout-ui-extensions/latest#configuration
+
+[extensions.settings]
+[[extensions.settings.fields]]
+key = "show_banner"
+type = "boolean"
+name = "Show banner"
+description = "Toggle visibility of this announcement banner."
+
+[[extensions.settings.fields]]
+key = "banner_title"
+type = "single_line_text_field"
+name = "Banner title"
+description = "Heading displayed on the banner (e.g., Special Announcement)."
+
+[[extensions.settings.fields]]
+key = "banner_description"
+type = "multi_line_text_field"
+name = "Banner message"
+description = "Announcement body text displayed inside the banner."
+
+[[extensions.settings.fields]]
+key = "banner_tone"
+type = "single_line_text_field"
+name = "Banner tone"
+description = "Tone of the banner: info, success, warning, or critical."
+
+[[extensions.settings.fields]]
+key = "banner_dismissible"
+type = "boolean"
+name = "Allow dismissal"
+description = "Enable a close button so buyers can dismiss the banner."
+
+[[extensions.settings.fields]]
+key = "banner_collapsible"
+type = "boolean"
+name = "Collapsible"
+description = "Allow buyers to collapse and expand banner content."
+
+[[extensions.settings.fields]]
+key = "link_text"
+type = "single_line_text_field"
+name = "Link text"
+description = "Optional label for a call-to-action link."
+
+[[extensions.settings.fields]]
+key = "link_url"
+type = "single_line_text_field"
+name = "Link URL"
+description = "Optional URL destination (e.g., https://yourstore.com/policies/shipping)."

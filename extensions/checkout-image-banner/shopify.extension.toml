@@ -1,0 +1,80 @@
+# Learn more about configuring your checkout UI extension:
+# https://shopify.dev/docs/api/checkout-ui-extensions/latest/configuration
+
+api_version = "2026-07"
+
+[[extensions]]
+name = "checkout-image-banner"
+handle = "checkout-image-banner"
+uid = "fe6c2f99-5c24-4b48-0608-0366946ee1c061e36b07"
+type = "ui_extension"
+
+[[extensions.targeting]]
+module = "./src/Checkout.jsx"
+target = "purchase.checkout.header.render-after"
+
+[[extensions.targeting]]
+module = "./src/Checkout.jsx"
+target = "purchase.checkout.block.render"
+
+[[extensions.targeting]]
+module = "./src/Checkout.jsx"
+target = "purchase.thank-you.block.render"
+
+[extensions.capabilities]
+api_access = true
+
+[extensions.settings]
+[[extensions.settings.fields]]
+key = "show_banner"
+type = "boolean"
+name = "Show image banner"
+description = "Toggle visibility of this image banner"
+
+[[extensions.settings.fields]]
+key = "desktop_image_url"
+type = "single_line_text_field"
+name = "Desktop image URL"
+description = "Image URL for desktop displays (paste URL from Shopify Files or CDN)"
+
+[[extensions.settings.fields]]
+key = "mobile_image_url"
+type = "single_line_text_field"
+name = "Mobile image URL"
+description = "Optional image URL optimized for mobile screens (defaults to desktop image)"
+
+[[extensions.settings.fields]]
+key = "alt_text"
+type = "single_line_text_field"
+name = "Image alt description"
+description = "Accessibility description for the banner image"
+
+[[extensions.settings.fields]]
+key = "banner_title"
+type = "single_line_text_field"
+name = "Banner title"
+description = "Optional text headline placed beneath the image banner"
+
+[[extensions.settings.fields]]
+key = "banner_caption"
+type = "multi_line_text_field"
+name = "Banner description"
+description = "Optional descriptive message or promotional copy"
+
+[[extensions.settings.fields]]
+key = "link_url"
+type = "single_line_text_field"
+name = "Click destination URL"
+description = "Optional link to redirect when a customer clicks the banner"
+
+[[extensions.settings.fields]]
+key = "aspect_ratio"
+type = "single_line_text_field"
+name = "Aspect ratio"
+description = "Image proportion format (e.g. 3/1, 2/1, 16/9, or 1/1)"
+
+[[extensions.settings.fields]]
+key = "border_radius"
+type = "single_line_text_field"
+name = "Corner roundness"
+description = "Corner style: none, small, base, or large"
